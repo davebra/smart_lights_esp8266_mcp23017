@@ -1,11 +1,17 @@
-## Smart Lights with ESP8266 and MCP23017
+## Impaired Home Automation
+
+Advanced Studio Project @ AIT
+
+6201 Mohammed Tantawy - 6678 Davide Bragagnolo
+
+### Smart Lights with ESP8266 and MCP23017
 This project has been created for a project during my Bachelor of IT course.
 
 The MCP23017 is a GPIO expander with i2c interface, in this way I can turn on/off up to 16 lights.
 
 The interface use HTTP GET requests, and output a JSON document with the operation and lights status.
 
-### Instructions
+#### Instructions
 - include the [Adafruit MCP23017](https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library) library if you use the Adafruit ESP8266, or [my fork](https://github.com/davebra/Adafruit-MCP23017-Arduino-Library) if you use a generic ESP8266 and you need to change the gpio for Wire.h class
 - set your network ssid and password
 - open the browser to:
@@ -13,7 +19,7 @@ The interface use HTTP GET requests, and output a JSON document with the operati
     - `http://your_esp8266_ip/on/2` to turn on (set HIGH) MCP23017 port number 2 (you can use 0 to 15)
     - `http://your_esp8266_ip/off/3` to turn on (set HIGH) MCP23017 port number 3 (you can use 0 to 15)
 
-### Connections (after deploy, generic ESP8266)
+#### Connections (after deploy, generic ESP8266)
 - esp8266 VCC -> 3.3v
 - esp8266 GND -> GND
 - esp8266 gpio0 -> MCP23017 pin13
@@ -25,10 +31,10 @@ The interface use HTTP GET requests, and output a JSON document with the operati
 - MCP23017 pin17 -> GND
 - MCP23017 pin18 -> 3.3v
 
-### MCP23017 pins
+#### MCP23017 pins
 ![MCP23017 pinout](MCP23017pinout.png "MCP23017 pinout")
 
-### MCP23017 Lights mapping
+#### MCP23017 Lights mapping
 - MCP23017 pin21 -> light 0
 - MCP23017 pin22 -> light 1
 - MCP23017 pin23 -> light 2
