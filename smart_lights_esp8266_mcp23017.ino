@@ -18,12 +18,15 @@ Adafruit_MCP23017 mcp;
 void setup() {
   Serial.begin(9600);
 
-    mcp.begin(0, 2); 
+  mcp.begin(0, 2); 
 
-    for (int i = 0; i < 16; ++i){
-        mcp.pinMode(i, OUTPUT);
-        mcp.digitalWrite(i, LOW);
-    }
+  for (int i = 0; i < 16; ++i){
+    mcp.pinMode(i, OUTPUT);
+    mcp.digitalWrite(i, LOW);
+  }
+
+  //set the wifi hostname
+  WiFi.hostname("lights.local");
 
   // Connect to Wi-Fi network with SSID and password
   WiFi.begin(ssid, password);
@@ -78,6 +81,16 @@ void loop(){
                 } else {
                   client.print("invalid port\"");                  
                 }
+            } else if (header.indexOf("GET /onall") >= 0) {
+                for (int i = 0; i < 16; ++i){
+                  mcp.digitalWrite(i, HIGH);  
+                } 
+                client.print("on all\"");
+            } else if (header.indexOf("GET /offall") >= 0) {
+                for (int i = 0; i < 16; ++i){
+                  mcp.digitalWrite(i, LOW);  
+                } 
+                client.print("off all\"");
             } else {
                 client.print("read\"");
             }
